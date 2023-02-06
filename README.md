@@ -7,7 +7,7 @@
 
 # Deployment
 
-1) Fork the following repo https://github.com/open-sudo/rosa-idp.git to your github repo.
+1) Fork the following repo https://github.com/SystemSix3/rosa-idp.git to your github repo.
 
 2) Clone the repo you just forked
 ```shell
@@ -131,7 +131,7 @@ Once you get a route, invoke it using curl. Be sure to use http instead of https
 Download the <a href="https://raw.githubusercontent.com/rh-mobb/documentation/main/content/docs/rosa/metrics-to-cloudwatch-agent/dashboard.json">dashboard json file</a>. Customize it with following commands:
 
 ```shell
-sed -i "s/__CLUSTER_NAME__/$YOUR_CLUSTER_NAME/g" dashboard.json 
+sed -i "s/axelrosa/$YOUR_CLUSTER_NAME/g" dashboard.json 
 sed -i "s/__REGION_NAME__/$YOUR_CLUSTER_REGION/g" dashboard.json 
 ```
 

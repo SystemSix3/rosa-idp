@@ -6,8 +6,8 @@ if [ -z "$ORIGIN_URL" ]; then
   exit;
 fi
 echo "Current repo url is: $ORIGIN_URL"
-if [[ "$ORIGIN_URL" == *"open-sudo"* ]]; then
-  echo "You CANNOT apply these changes to open-sudo"
+if [[ "$ORIGIN_URL" == *"SystemSix3"* ]]; then
+  echo "You CANNOT apply these changes to SystemSix3"
   exit;
 fi
 
@@ -75,24 +75,24 @@ echo "AWS Account ID found: $AWS_ACCOUNT_ID"
 
 export current=`git config --get remote.origin.url`
 echo "Current repo url is: $current"
-if [[ "$current" == *"open-sudo"* ]]; then
-  echo "You CANNOT apply these changes to open-sudo"
+if [[ "$current" == *"SystemSix3"* ]]; then
+  echo "You CANNOT apply these changes to SystemSix3"
 fi
 
 export GSED=`which gsed`
 if [ ! -z "$GSED" ]; then
    echo "gsed found. using it instead of sed"
-   find . -type f -not -path '*/\.git/*' -exec gsed -i "s|open-sudo|${GITHUB_NAME}|g" {} +
-   find . -type f -not -path '*/\.git/*' -exec gsed -i "s|__AWS_ACCOUNT_ID__|${AWS_ACCOUNT_ID}|g" {} +
-   find . -type f -not -path '*/\.git/*' -exec gsed -i "s|__OIDC_ENDPOINT__|${OIDC_ENDPOINT}|g" {} +
-   find . -type f -not -path '*/\.git/*' -exec gsed -i "s|__REGION__|${REGION}|g" {} +
-   find . -type f -not -path '*/\.git/*' -exec gsed -i "s|__CLUSTER_NAME__|${CLUSTER_NAME}|g" {} +
+   find . -type f -not -path '*/\.git/*' -exec gsed -i "s|SystemSix3|${GITHUB_NAME}|g" {} +
+   find . -type f -not -path '*/\.git/*' -exec gsed -i "s|301372634383|${AWS_ACCOUNT_ID}|g" {} +
+   find . -type f -not -path '*/\.git/*' -exec gsed -i "s|rh-oidc.s3.us-east-1.amazonaws.com/21ncsla7fdm8qkbobuobda8212ritrk1|${OIDC_ENDPOINT}|g" {} +
+   find . -type f -not -path '*/\.git/*' -exec gsed -i "s|us-east-2|${REGION}|g" {} +
+   find . -type f -not -path '*/\.git/*' -exec gsed -i "s|axelrosa|${CLUSTER_NAME}|g" {} +
 else
-   find . -type f -not -path '*/\.git/*' -exec sed -i "s|open-sudo|${GITHUB_NAME}|g" {} +
-   find . -type f -not -path '*/\.git/*' -exec sed -i "s|__AWS_ACCOUNT_ID__|${AWS_ACCOUNT_ID}|g" {} +
-   find . -type f -not -path '*/\.git/*' -exec sed -i "s|__OIDC_ENDPOINT__|${OIDC_ENDPOINT}|g" {} +
-   find . -type f -not -path '*/\.git/*' -exec sed -i "s|__REGION__|${REGION}|g" {} +
-   find . -type f -not -path '*/\.git/*' -exec sed -i "s|__CLUSTER_NAME__|${CLUSTER_NAME}|g" {} +
+   find . -type f -not -path '*/\.git/*' -exec sed -i "s|SystemSix3|${GITHUB_NAME}|g" {} +
+   find . -type f -not -path '*/\.git/*' -exec sed -i "s|301372634383|${AWS_ACCOUNT_ID}|g" {} +
+   find . -type f -not -path '*/\.git/*' -exec sed -i "s|rh-oidc.s3.us-east-1.amazonaws.com/21ncsla7fdm8qkbobuobda8212ritrk1|${OIDC_ENDPOINT}|g" {} +
+   find . -type f -not -path '*/\.git/*' -exec sed -i "s|us-east-2|${REGION}|g" {} +
+   find . -type f -not -path '*/\.git/*' -exec sed -i "s|axelrosa|${CLUSTER_NAME}|g" {} +
 fi
 deploy=`cat ./deploy.sh`
 
@@ -154,4 +154,3 @@ echo -e "Please execute following command next:       git push"
 
 
      
-

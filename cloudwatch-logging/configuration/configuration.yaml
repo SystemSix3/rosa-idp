@@ -7,7 +7,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "0"
 
 stringData:
-  role_arn: "arn:aws:iam::__AWS_ACCOUNT_ID__:role/__CLUSTER_NAME__-RosaClusterWatchLogging"
+  role_arn: "arn:aws:iam::301372634383:role/axelrosa-RosaClusterWatchLogging"
 ---
 apiVersion: "logging.openshift.io/v1"
 kind: ClusterLogForwarder
@@ -23,8 +23,8 @@ spec:
       type: cloudwatch
       cloudwatch:
         groupBy: namespaceName
-        groupPrefix: rosa-__CLUSTER_NAME__
-        region: __REGION__
+        groupPrefix: rosa-axelrosa
+        region: us-east-2
       secret:
         name: cloudwatch-credentials
   pipelines:
